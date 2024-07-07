@@ -1,45 +1,38 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import './components/UserTable';
+import './components/CreateUserForm';
+import UserTable from './components/UserTable';
+import CreateUserForm from './components/CreateUserForm';
 
 function App() {
     const [users, setUsers] = useState();
+    const [selectedTab, setSelectedTab] = useState("left");
 
     useEffect(() => {
         populateUsers();
     }, []);
 
-    const contents = users === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table className="table table-striped" aria-labelledby="tabelLabel">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Created At</th>
-                    <th>Password</th>
-                </tr>
-            </thead>
-            <tbody>
-                {users.map(user =>
-                    <tr key={user.id}>
-                        <td>{user.id}</td>
-                        <td>{user.firstName}</td>
-                        <td>{user.lastName}</td>
-                        <td>{user.email}</td>
-                        <td>{user.createdAt}</td>
-                        <td>{user.password}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
+    function renderDisplay(selectionState) {
+        switch (selectionState) {
+            case "left": return <UserTable users={users}/>;
+            case "middle": return <CreateUserForm/>;
+            default: return <label>Default component</label>;
+        }
+    }
+
 
     return (
         <div>
-            <h1 id="tabelLabel">Users</h1>
-            <p>This component demonstrates fetching data from the server.</p>
-            {contents}
+            <div className='e-btn-group'>
+                <input type="radio" id="radioleft" name="align" value="left" checked={selectedTab === "left"} onChange={e => setSelectedTab(e.target.value)} />
+                <label className="e-btn" htmlFor="radioleft">All Users</label>
+                <input type="radio" id="radiomiddle" name="align" value="middle" checked={selectedTab === "middle"} onChange={e => setSelectedTab(e.target.value)} />
+                <label className="e-btn" htmlFor="radiomiddle">Create User</label>
+            </div>
+            <div className='content'>
+                {renderDisplay(selectedTab)}
+            </div>
         </div>
     );
     

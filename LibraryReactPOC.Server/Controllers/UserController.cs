@@ -14,10 +14,13 @@ namespace LibraryReactPOC.Server.Controllers
         public UserController(ILogger<UserController> logger)
         {
             _logger = logger;
-            foreach (User u in GenerateUsers())
+            if (Userbase.GetUsers().Count == 0)
             {
-                Userbase.AddUser(u);
-            }
+                foreach (User u in GenerateUsers())
+                {
+                    Userbase.AddUser(u);
+                }
+            }   
         }
 
         

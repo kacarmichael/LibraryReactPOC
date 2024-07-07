@@ -26,6 +26,8 @@
 
         public string Password { get { return _password; } } //Solely for initial testing
 
+        public List<Library> Libraries { get { return _libraries; } }
+
 
 
     }
