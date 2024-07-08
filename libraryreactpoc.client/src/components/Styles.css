@@ -1,0 +1,21 @@
+.form {
+    display:flex;
+    flex-direction:column;
+    text-align:left;
+    place-items:center;
+}
+
+#createUserFormButton {
+    display:flex;
+    flex-direction:row;
+    flex-grow:inherit;
+    justify-items:center;
+}
+
+#createUserFormSubmitButton {
+    text-align:center;
+    display: block;
+    margin: 0 auto;
+    justify-content:center;
+    align-items:center;
+}

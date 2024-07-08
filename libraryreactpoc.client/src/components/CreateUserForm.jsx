@@ -1,4 +1,6 @@
 import { useState } from "react";
+import './Styles.css';
+import CreateUserFormButton from "./CreateUserFormButton";
 
 function CreateUserForm() {
 
@@ -61,15 +63,14 @@ function CreateUserForm() {
                 {successMessage()}
             </div>
             <form>
-                <label className="label">Name</label>
-                <input onChange={handleName} className="input" value={name} type="text"/ >
-                <label className="label">Email</label>
-                <input onChange={handleEmail} className="input" value={email} type="email"/ >
-                <label className="label">Password</label>
-                <input onChange={handlePassword} className="input" value={password} type="password" />
-                <button onClick={handleSubmit} className="btn" type="submit">
-                    Submit
-                </button>
+                <CreateUserFormButton label="Name" onChange={handleName} />
+                <CreateUserFormButton label="Email" onChange={handleEmail} />
+                <CreateUserFormButton label="Password" onChange={handlePassword} />
+                <div id="createUserFormSubmitButton">
+                    <button onClick={handleSubmit} className="btn" type="submit">
+                        Submit
+                    </button>
+                </div>
             </form>
         </div>
     );
