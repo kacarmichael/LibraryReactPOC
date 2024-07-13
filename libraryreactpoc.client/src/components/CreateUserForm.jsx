@@ -32,6 +32,7 @@ function CreateUserForm() {
             setError(true);
         }
         else {
+
             setSubmitted(true);
             setError(false);
         }

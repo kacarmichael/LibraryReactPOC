@@ -1,3 +1,9 @@
+using System;
+using System.Configuration;
+
+using LibraryReactPOC.Server.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,6 +21,9 @@ builder.Services.AddCors(options =>
             policy.WithOrigins("https://localhost:5173"); 
         });
 });
+
+builder.Services.AddDbContext<LibraryDbContext>
+    (options => options.UseSqlServer(builder.Configuration.GetConnectionString("default")));
 
 var app = builder.Build();
 

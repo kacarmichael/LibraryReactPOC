@@ -11,14 +11,14 @@
         private string _password;
         private List<Library> _libraries;
 
-        public User(string firstname, string lastname, string email) 
+        public User(string firstname, string lastname, string email, string password) 
         {
             FirstName = firstname;
             LastName = lastname;
             Email = email;
             CreatedAt = DateTime.Now;
             _id = 0;
-            _password = "password";
+            _password = password;
             _libraries = new List<Library>();
         }
 

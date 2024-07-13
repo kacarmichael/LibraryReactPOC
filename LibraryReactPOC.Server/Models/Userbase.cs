@@ -6,7 +6,7 @@ namespace LibraryReactPOC.Server.Models
     {
 
         private static List<User> _users = new List<User> {
-            new User(firstname: "Test", lastname: "User", email: "test@user.com")
+            new User(firstname: "Test", lastname: "User", email: "test@user.com", password: "password")
         };
 
         public static User GetUser(int id)
